@@ -1,7 +1,9 @@
 %%
+clear
 xls = readmatrix('utk.xlsx');
 
-initial_params = [220 50 10 0.2];
+% initial_params = [220 50 10 0.2];
+initial_params = [1 0.5 10 0.5];
 
 res = initial_params(1);
 ch = initial_params(2);
@@ -16,13 +18,13 @@ t = unique(t);
 
 fmodel_results0 = fwd_model(res,ch,tau,fre_exp,I0,t,n);
 
-delta = 0.5;
+delta = 0.1;
 actual_data = xls(1, 1:12)./12.4;
 jacob = zeros(12,4);
 sq_sum_err = 1e7;
 all_sq_sum_err = [];
  all_m = [];
-while sq_sum_err > 1e6
+while sq_sum_err > 1e-3
     disp(sq_sum_err)
     for i=1:4
         initial_params(i) = initial_params(i) + delta;
