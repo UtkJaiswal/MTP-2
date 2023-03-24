@@ -8,7 +8,7 @@ t = [0.02 0.02 0.04 0.06 0.08 0.1 0.14 0.18 0.26 0.4 0.6 0.88 1.2];
 t = unique(t);
 final_data = zeros(471,6);
 for r=1:471
-        options = optimoptions('lsqnonlin','Display','off','Algorithm','trust-region-reflective'...
+options = optimoptions('lsqnonlin','Display','off','Algorithm','trust-region-reflective'...
     ,'FunctionTolerance',5e-05,'StepTolerance',5e-05,'OptimalityTolerance',5e-05,...
     'MaxIterations',5e+05,'MaxFunctionEvaluations',5e+05);
 [phi,resnorm,residual,exitflag,output] = lsqnonlin(@(p) Utk_lsqFun(p,xls(r,1:12)), phi0,[],[],options);
@@ -91,4 +91,14 @@ figure
     figure
     scatter(final_data(less_than_10,4), final_data(less_than_10,5))
     title('mean IP - c')
+%%
 
+m = mean(xls(:, 1:12));
+e = std(xls(:,1:12))/sqrt(472);
+figure
+    errorbar(t,m,e)
+
+x_mad = mad(xls(:,1:12),1);
+    figure
+        plot(median(xls(:,1:12)))
+%%
