@@ -2,8 +2,8 @@
 clear
 xls = readmatrix('utk.xlsx');
 
-% initial_params = [220 50 10 0.2];
-initial_params = [1 0.5 10 0.5];
+initial_params = [220 50 10 1];
+% initial_params = [220 0.5 10 0.5];
 
 res = initial_params(1);
 ch = initial_params(2);
@@ -11,7 +11,7 @@ tau = initial_params(3);
 fre_exp = initial_params(4);
 
 I0 = 0.02;
-n = 50e3;
+n = 5;
 t = [0.02 0.02 0.04 0.06 0.08 0.1 0.14 0.18 0.26 0.4 0.6 0.88 1.2];
 t = unique(t);
 
