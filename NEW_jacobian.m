@@ -1,6 +1,6 @@
 %%
 clear
-xls = readmatrix('utk.xlsx');
+xls = readmatrix('IP data project 3.xlsx');
 
 initial_params = [220 50 10 1];
 % initial_params = [220 0.5 10 0.5];
